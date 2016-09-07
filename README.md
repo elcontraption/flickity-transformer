@@ -16,16 +16,18 @@ var flckty = new Flickity('.carousel', {
   // options
 })
 
-flckty.on('scroll', flickityTransformer({
-  transforms: [
-    {
-      property: 'scale',
-      stops: [
-        [-300, 0.5],
-        [0, 1],
-        [300, 0.5]
-      ]
-    }
-  ]
-}))
+flckty.on('scroll', function () {
+  flickityTransformer({
+    transforms: [
+      {
+        property: 'scale',
+        stops: [
+          [-300, 0.5],
+          [0, 1],
+          [300, 0.5]
+        ]
+      }
+    ]
+  })
+})
 ```
