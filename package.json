@@ -9,7 +9,8 @@
   },
   "scripts": {
     "lint": "eslint src/index.js",
-    "build": "npm run lint && babel src -d dist"
+    "build": "npm run lint && babel src -d dist",
+    "test": "mocha --compilers js:babel-core/register test/index.js"
   },
   "keywords": [
     "flickity",
@@ -26,10 +27,13 @@
   "homepage": "https://github.com/elcontraption/flickity-transformer#readme",
   "devDependencies": {
     "babel-cli": "6.14.0",
+    "babel-preset-es2015": "6.14.0",
+    "chai": "3.5.0",
     "eslint": "3.4.0",
     "eslint-config-standard": "6.0.0",
     "eslint-plugin-promise": "2.0.1",
     "eslint-plugin-standard": "2.0.0",
-    "flickity": "2.0.3"
+    "flickity": "2.0.3",
+    "mocha": "3.0.2"
   }
 }

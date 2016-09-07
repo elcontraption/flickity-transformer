@@ -1,1 +1,3 @@
-console.log('howdy');
+const FlickityTransformer = function (opts) {};
+
+export default FlickityTransformer;
