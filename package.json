@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "description": "Transform your Flickity",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elcontraption/flickity-transformer.git"
+  },
+  "scripts": {
+    "lint": "eslint src/index.js",
+    "build": "npm run lint && babel src -d dist"
   },
   "keywords": [
     "flickity",
@@ -17,10 +18,18 @@
     "scale",
     "carousel"
   ],
-  "author": "Darin Reid",
+  "author": "Darin Reid <darin@elcontraption.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/elcontraption/flickity-transformer/issues"
   },
-  "homepage": "https://github.com/elcontraption/flickity-transformer#readme"
+  "homepage": "https://github.com/elcontraption/flickity-transformer#readme",
+  "devDependencies": {
+    "babel-cli": "6.14.0",
+    "eslint": "3.4.0",
+    "eslint-config-standard": "6.0.0",
+    "eslint-plugin-promise": "2.0.1",
+    "eslint-plugin-standard": "2.0.0",
+    "flickity": "2.0.3"
+  }
 }
