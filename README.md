@@ -26,6 +26,14 @@ flckty.on('scroll', function () {
           [0, 1],
           [300, 0.5]
         ]
+      },
+      {
+        property: 'rotate',
+        stops: [
+          [-300, -45],
+          [0, 0],
+          [300, 45]
+        ]
       }
     ]
   })
