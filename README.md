@@ -10,6 +10,7 @@ npm i --save flickity-transformer
 
 ## Usage
 ```js
+var Flickity = require('flickity')
 var FlickityTransformer = require('flickity-transformer')
 
 var flckty = new Flickity('.carousel', {
@@ -37,4 +38,11 @@ var ftx = new FlickityTransformer(flckty, {
     }
   ]
 })
+```
+
+Set units:
+
+```js
+// Set `rotate` units to something other than the default `deg`:
+ftx.units.rotate = 'rad'
 ```
