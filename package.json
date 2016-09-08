@@ -2,7 +2,7 @@
   "name": "flickity-transformer",
   "version": "0.1.0",
   "description": "Transform your Flickity",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elcontraption/flickity-transformer.git"
@@ -34,6 +34,8 @@
     "eslint-plugin-promise": "2.0.1",
     "eslint-plugin-standard": "2.0.0",
     "flickity": "2.0.3",
-    "mocha": "3.0.2"
+    "mocha": "3.0.2",
+    "mocha-jsdom": "1.1.0",
+    "sinon": "1.17.5"
   }
 }

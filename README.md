@@ -16,7 +16,8 @@ var flckty = new Flickity('.carousel', {
   // options
 })
 
-var ftx = new FlickityTransformer({
+// Create a new FlickityTransformer, passing in your Flickity instance and options object
+var ftx = new FlickityTransformer(flckty, {
   transforms: [
     {
       property: 'scale',
@@ -36,6 +37,4 @@ var ftx = new FlickityTransformer({
     }
   ]
 })
-
-flckty.on('scroll', ftx.scroll)
 ```

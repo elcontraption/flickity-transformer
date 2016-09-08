@@ -5,9 +5,14 @@ global.chai = chai
 global.expect = global.chai.expect
 
 describe('FlickityTransformer', () => {
-  it('should be able to initialize with new', () => {
-    const ftx = new FlickityTransformer()
 
-    expect(ftx).to.be.an('object')
+  describe('constructor', () => {
+    it('should export a constructor', () => {
+      expect(FlickityTransformer).to.be.a('function')
+    })
+
+    it('should require two parameters', () => {
+      expect(new FlickityTransformer).to.throw(Error)
+    })
   })
 })
