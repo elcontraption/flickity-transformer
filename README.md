@@ -3,6 +3,8 @@
 
 Flickity Transformer enhances [Flickity](http://flickity.metafizzy.co/) with exciting effects through the use of CSS transform functions.
 
+![Demo image](demo-image.png)
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
@@ -15,8 +17,8 @@ npm i --save flickity-transformer
 ```
 
 Via download:
-- Minified: [flickity-transformer.pkgd.min.js](dist/flickity-transformer.pkgd.min.js)
-- Un-minified: [flickity-transformer.pkgd.js](dist/flickity-transformer.pkgd.js)
+- Minified: [flickity-transformer.pkgd.min.js](https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.min.js)
+- Un-minified: [flickity-transformer.pkgd.js](https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.js)
 
 CDN:
 ```html
