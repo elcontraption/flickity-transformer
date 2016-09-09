@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.css" media="screen">
 
   <style type="text/css">
-    .carousel {}
+    .carousel {
+      height: 100vh;
+    }
     .slide {
       display: flex;
       align-items: center;
@@ -44,9 +46,53 @@
 </div>
 
 <script>
-  var flkty = new Flickity('.carousel')
+  var flkty = new Flickity('.carousel', {
+    setGallerySize: false,
+    pageDots: false
+  })
+
   var ftx = new FlickityTransformer(flkty, {
-    transforms: []
+    transforms: [
+      {
+        property: 'scale',
+        stops: [
+          [-300, 0.5],
+          [0, 0.8],
+          [300, 0.5]
+        ]
+      },
+      {
+        property: 'translateY',
+        stops: [
+          [-1000, 500],
+          [0, 0],
+          [1000, 500]
+        ]
+      },
+      {
+        property: 'rotate',
+        stops: [
+          [-300, -30],
+          [0, 0],
+          [300, 30]
+        ]
+      },{
+        // Declare perspective here, before rotateY. At least two stops are required, hence the duplication.
+        property: 'perspective',
+        stops: [
+          [0, 600],
+          [0, 600]
+        ]
+      },
+      {
+        property: 'rotateY',
+        stops: [
+          [-300, 45],
+          [0, 0],
+          [300, -45]
+        ]
+      }
+    ]
   })
 </script>
 

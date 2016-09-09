@@ -15,16 +15,6 @@ describe('FlickityTransformer', () => {
     expect(FlickityTransformer).to.throw(`${name} requires two parameters`)
   })
 
-  // it('should require a version of Flickity that includes the `scroll` event', () => {
-  //   const ftx = () => {
-  //     new FlickityTransformer({
-  //       _events: {}
-  //     }, {})
-  //   }
-  //
-  //   expect(ftx).to.throw(`${name} requires the first parameter to be a instance of Flickity that supports the \`scroll\` event (version 2+)`)
-  // })
-
   it('should require the second parameter contains `transforms` array', () => {
     const ftx = () => {
       new FlickityTransformer({

@@ -6,12 +6,16 @@ const rollup = require('rollup')
 rollup.rollup({
   entry: 'src/index.js',
   plugins: [
+    babel({
+      presets: ['es2015-rollup'],
+      babelrc: false
+    }),
     resolve()
   ]
 }).then(bundle => {
   bundle.write({
     format: 'iife',
-    moduleName: 'flickity-transformer',
+    moduleName: 'FlickityTransformer',
     dest: 'dist/flickity-transformer.js'
   })
 

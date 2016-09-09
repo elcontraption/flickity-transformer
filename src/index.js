@@ -53,12 +53,6 @@ const FlickityTransformer = function (flkty, opts) {
     throw new Error(`${name} requires two parameters`)
   }
 
-  // Require a version of Flickity supporting `scroll` event
-  // TODO: the scroll event is not present unless a listener has been created.
-  // if (flkty._events === undefined || flkty._events.scroll === undefined) {
-  //   throw new Error(`${name} requires the first parameter to be a instance of Flickity that supports the \`scroll\` event (version 2+)`)
-  // }
-
   // Require `transforms` array in `opts`
   if (opts.transforms === undefined) {
     throw new Error(`${name} requires the second parameter contain a \`transforms\` array`)
@@ -80,12 +74,17 @@ function init () {
   createScaleFunctions()
 
   // Apply initial transforms
-  cellElements.forEach(applyTransforms)
+  flickity.slides.forEach(applyTransforms)
 
   // Apply again on scroll
   flickity.on('scroll', () => {
-    cellElements.forEach(applyTransforms)
+    flickity.slides.forEach(applyTransforms)
   })
+
+  // Require a version of Flickity supporting `scroll` event
+  if (flickity._events.scroll === undefined) {
+    throw new Error(`${name} requires the first parameter to be a instance of Flickity that supports the \`scroll\` event (version 2+)`)
+  }
 
   // Apply again on resize
   // TODO: debounce this?
@@ -147,7 +146,7 @@ function applyTransforms (slide, i) {
  * @return {String}
  */
 function makeTransform (transform, xPos) {
-  const prop = transform.prop
+  const prop = transform.property
   const unit = units[prop] || ''
   const tx = transform.scale(xPos)
 
