@@ -2,7 +2,7 @@
   "name": "flickity-transformer",
   "version": "0.1.1",
   "description": "Transform your Flickity",
-  "main": "dist/flickity-transformer.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/elcontraption/flickity-transformer.git"
@@ -10,7 +10,6 @@
   "scripts": {
     "lint": "eslint src/**",
     "rollup": "node rollup",
-    "_rollup": "rollup -c",
     "uglify": "uglifyjs dist/flickity-transformer.js --output dist/flickity-transformer.min.js",
     "build": "npm run lint && npm run rollup && npm run uglify",
     "test": "mocha --compilers js:babel-core/register test/index.js",

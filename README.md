@@ -57,4 +57,5 @@ Contributions are welcome.
 - Add support for more transform functions.
 - Add ability to use units other than the defaults.
 - Replace d3-scale dependency with a lighter-weight linear scale that supports clamping and piecewise scales.
+- More useful tests.
 - Test against all Flickity features (e.g. wrapAround is not currently supported).
