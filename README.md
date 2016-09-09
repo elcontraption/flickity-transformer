@@ -48,7 +48,7 @@ var ftx = new FlickityTransformer(flckty, {
 ```
 
 ## Examples
-Coming soon...
+[Basic CodePen demo](http://codepen.io/elcontraption/pen/RGPboR)
 
 ## Contributing
 Contributions are welcome.
