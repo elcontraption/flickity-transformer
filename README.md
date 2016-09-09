@@ -38,16 +38,16 @@ npm i --save flickity-transformer
 ```
 
 Via download:
-- Minified: [flickity-transformer.pkgd.min.js](https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.min.js)
-- Un-minified: [flickity-transformer.pkgd.js](https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.js)
+- Minified: [flickity-transformer.pkgd.min.js](https://unpkg.com/flickity-transformer@0.1.6/dist/flickity-transformer.pkgd.min.js)
+- Un-minified: [flickity-transformer.pkgd.js](https://unpkg.com/flickity-transformer@0.1.6/dist/flickity-transformer.pkgd.js)
 
 CDN:
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity-transformer@0.1.6/dist/flickity-transformer.pkgd.min.js"></script>
 
 <!-- Un-minified -->
-<script src="https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.js"></script>
+<script src="https://unpkg.com/flickity-transformer@0.1.6/dist/flickity-transformer.pkgd.js"></script>
 ```
 
 ## Usage
