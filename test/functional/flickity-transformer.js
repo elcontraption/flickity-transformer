@@ -2311,11 +2311,11 @@ function applyTransforms(slide, i) {
  * @return {String}
  */
 function makeTransform(transform, xPos) {
-  var prop = transform.property;
-  var unit = units[prop] || '';
+  var name = transform.name;
+  var unit = units[name] || '';
   var tx = transform.scale(xPos);
 
-  return prop + '(' + tx + unit + ')';
+  return name + '(' + tx + unit + ')';
 }
 
 return FlickityTransformer;

@@ -54,7 +54,7 @@
   var ftx = new FlickityTransformer(flkty, {
     transforms: [
       {
-        property: 'scale',
+        name: 'scale',
         stops: [
           [-300, 0.5],
           [0, 0.8],
@@ -62,7 +62,7 @@
         ]
       },
       {
-        property: 'translateY',
+        name: 'translateY',
         stops: [
           [-1000, 500],
           [0, 0],
@@ -70,22 +70,21 @@
         ]
       },
       {
-        property: 'rotate',
+        name: 'rotate',
         stops: [
           [-300, -30],
           [0, 0],
           [300, 30]
         ]
       },{
-        // Declare perspective here, before rotateY. At least two stops are required, hence the duplication.
-        property: 'perspective',
+        name: 'perspective',
         stops: [
           [0, 600],
           [0, 600]
         ]
       },
       {
-        property: 'rotateY',
+        name: 'rotateY',
         stops: [
           [-300, 45],
           [0, 0],

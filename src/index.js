@@ -146,11 +146,11 @@ function applyTransforms (slide, i) {
  * @return {String}
  */
 function makeTransform (transform, xPos) {
-  const prop = transform.property
-  const unit = units[prop] || ''
+  const name = transform.name
+  const unit = units[name] || ''
   const tx = transform.scale(xPos)
 
-  return `${prop}(${tx}${unit})`
+  return `${name}(${tx}${unit})`
 }
 
 /**
