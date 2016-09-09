@@ -1,6 +1,6 @@
 {
   "name": "flickity-transformer",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Transform your Flickity",
   "main": "dist/flickity-transformer.js",
   "repository": {
