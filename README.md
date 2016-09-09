@@ -16,11 +16,12 @@ Flickity Transformer provides a powerful interface to declare granular transform
   ]
 },
 {
-  name: 'rotate', // and add a little spin...
+  name: 'rotate', // and add a little rotation...
   stops: [
     [-300, -30], // rotate slides to the left
     [0, 0], // they'll be straight at center
     [300, 30] // and rotated to the right
+    // Add as many stops as you need
   ]
 }
 ```
