@@ -3,7 +3,7 @@
 
 Flickity Transformer enhances [Flickity](http://flickity.metafizzy.co/) with exciting effects through the use of CSS transform functions.
 
-[![Demo image](demo-image.png)](http://codepen.io/elcontraption/pen/RGPboR)
+[![Demo image](demo-image.png)](http://codepen.io/elcontraption/full/RGPboR/)
 
 - [Installation](#installation)
 - [Usage](#usage)
