@@ -86,4 +86,17 @@ var ftx = new FlickityTransformer(flckty, {
 [Basic CodePen demo](http://codepen.io/elcontraption/pen/RGPboR)
 
 ## Contributing
-Contributions are welcome.
+Contributions are welcome. To get up and running:
+
+```bash
+# Install dependencies
+$ npm install
+
+# Lint, test & build
+$ npm run build
+
+# Run functional test in the browser
+$ npm run functional
+
+# See various scripts in package.json
+```
