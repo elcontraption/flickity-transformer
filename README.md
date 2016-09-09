@@ -10,9 +10,21 @@ Flickity Transformer enhances [Flickity](http://flickity.metafizzy.co/) with exc
 
 ## Installation
 Via NPM:
-
 ```bash
 npm i --save flickity-transformer
+```
+
+Via download:
+- Minified: [flickity-transformer.pkgd.min.js](dist/flickity-transformer.pkgd.min.js)
+- Un-minified: [flickity-transformer.pkgd.js](dist/flickity-transformer.pkgd.js)
+
+CDN:
+```html
+<!-- Minified -->
+<script src="https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.min.js"></script>
+
+<!-- Un-minified -->
+<script src="https://unpkg.com/flickity-transformer@0.1.4/dist/flickity-transformer.pkgd.js"></script>
 ```
 
 ## Usage
@@ -58,5 +70,6 @@ Contributions are welcome.
 - Add support for more transform functions.
 - Add ability to use units other than the defaults.
 - Replace d3-scale dependency with a lighter-weight linear scale that supports clamping and piecewise scales.
+- Unbundle d3-scale in commonjs module.
 - More useful tests.
 - Test against all Flickity features (e.g. wrapAround is not currently supported).
