@@ -45,6 +45,7 @@ var ftx = new FlickityTransformer(flckty, {
     }
   ]
 })
+```
 
 ## Examples
 Coming soon...
