@@ -28,13 +28,14 @@
     "url": "https://github.com/elcontraption/flickity-transformer/issues"
   },
   "homepage": "https://github.com/elcontraption/flickity-transformer#readme",
+  "dependencies": {
+    "d3-scale": "^1.0.3"
+  },
   "devDependencies": {
     "babel-cli": "6.14.0",
     "babel-preset-es2015": "6.14.0",
     "babel-preset-es2015-rollup": "^1.2.0",
     "chai": "3.5.0",
-    "d3": "^4.2.2",
-    "d3-scale": "^1.0.3",
     "eslint": "3.4.0",
     "eslint-config-standard": "6.0.0",
     "eslint-plugin-promise": "2.0.1",
