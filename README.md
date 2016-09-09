@@ -16,6 +16,8 @@ npm i --save flickity-transformer
 ```
 
 ## Usage
+Create a new instance of FlickityTransformer, passing in your `flckty` instance and a configuration object that contains an array of `transforms`. Each transform should have a `name` property, corresponding to the transform function you want to use, and a `stops` array, containing at least two stops. Each stop is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
+
 ```js
 var Flickity = require('flickity')
 var FlickityTransformer = require('flickity-transformer')
@@ -24,7 +26,6 @@ var flckty = new Flickity('.carousel', {
   // options
 })
 
-// Create a new instance of FlickityTransformer, passing in your `flckty` instance and a configuration object that contains an array of `transforms`. Each transform should have a `name` property, corresponding to the transform function you want to use, and a `stops` array, containing at least two stops. Each stop is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
 var ftx = new FlickityTransformer(flckty, {
   transforms: [
     {
