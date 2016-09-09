@@ -39,7 +39,6 @@ var ftx = new FlickityTransformer(flckty, {
       name: 'rotate',
       stops: [
         [-300, -45],
-        [0, 0],
         [300, 45]
       ]
     }
