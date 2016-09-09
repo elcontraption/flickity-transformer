@@ -3,22 +3,27 @@ const commonjs = require('rollup-plugin-commonjs')
 const resolve = require('rollup-plugin-node-resolve')
 const rollup = require('rollup')
 
-rollup.rollup({
+const config = {
   entry: 'src/index.js',
   plugins: [
     babel({
       presets: ['es2015-rollup'],
       babelrc: false
-    }),
-    resolve()
+    })
   ]
-}).then(bundle => {
+}
+
+rollup.rollup(config).then(bundle => {
   bundle.write({
     format: 'cjs',
     moduleName: 'FlickityTransformer',
     dest: 'dist/flickity-transformer.js'
   })
+})
 
+config.plugins.push(resolve())
+
+rollup.rollup(config).then(bundle => {
   bundle.write({
     format: 'iife',
     moduleName: 'FlickityTransformer',
