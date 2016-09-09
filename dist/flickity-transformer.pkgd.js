@@ -1,3 +1,4 @@
+var FlickityTransformer = (function () {
 'use strict';
 
 function ascending (a, b) {
@@ -2317,4 +2318,6 @@ function makeTransform(transform, xPos) {
   return name + '(' + tx + unit + ')';
 }
 
-module.exports = FlickityTransformer;
+return FlickityTransformer;
+
+}());

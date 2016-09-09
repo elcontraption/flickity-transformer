@@ -14,9 +14,15 @@ rollup.rollup({
   ]
 }).then(bundle => {
   bundle.write({
-    format: 'iife',
+    format: 'cjs',
     moduleName: 'FlickityTransformer',
     dest: 'dist/flickity-transformer.js'
+  })
+
+  bundle.write({
+    format: 'iife',
+    moduleName: 'FlickityTransformer',
+    dest: 'dist/flickity-transformer.pkgd.js'
   })
 
   bundle.write({
