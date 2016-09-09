@@ -17,7 +17,7 @@ var flckty = new Flickity('.carousel', {
   // options
 })
 
-// Create a new FlickityTransformer, passing in your Flickity instance and options object
+// Create a new instance of FlickityTransformer, passing in your Flickity instance and options object:
 var ftx = new FlickityTransformer(flckty, {
   transforms: [
     {
@@ -38,11 +38,3 @@ var ftx = new FlickityTransformer(flckty, {
     }
   ]
 })
-```
-
-Set units:
-
-```js
-// Set `rotate` units to something other than the default `deg`:
-ftx.units.rotate = 'rad'
-```
