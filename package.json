@@ -11,7 +11,7 @@
     "lint": "eslint src/**",
     "rollup": "node rollup",
     "uglify": "uglifyjs dist/flickity-transformer.pkgd.js --output dist/flickity-transformer.pkgd.min.js",
-    "build": "npm run lint && npm run rollup && npm run uglify",
+    "build": "npm run lint && npm run test && npm run rollup && npm run uglify",
     "test": "mocha --compilers js:babel-core/register test/index.js",
     "functional": "http-server test/functional"
   },

@@ -89,7 +89,7 @@ function init () {
   // Apply again on resize
   // TODO: debounce this?
   window.addEventListener('resize', () => {
-    cellElements.forEach(applyTransforms)
+    flickity.slides.forEach(applyTransforms)
   })
 }
 

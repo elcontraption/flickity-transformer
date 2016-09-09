@@ -91,7 +91,7 @@ function init() {
   // Apply again on resize
   // TODO: debounce this?
   window.addEventListener('resize', function () {
-    cellElements.forEach(applyTransforms);
+    flickity.slides.forEach(applyTransforms);
   });
 }
 
