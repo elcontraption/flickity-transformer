@@ -1,9 +1,29 @@
 # Flickity Transformer
-*Transform your Flickity*
 
-Flickity Transformer enhances [Flickity](http://flickity.metafizzy.co/) with exciting effects through the use of CSS transform functions.
+Open up [Metafizzy's](http://metafizzy.co/) amazing [Flickity](http://flickity.metafizzy.co/) to a virtually limitless array of transform effects.
 
 [![Demo image](demo.gif)](http://codepen.io/elcontraption/full/RGPboR/)
+
+Flickity Transformer provides a powerful interface to declare granular transform effects on carousel slides:
+
+```js
+{
+  name: 'scale', // Let's scale your slides...
+  stops: [
+    [-300, 0.5], // at -300px, slides will be scaled to 0.5
+    [0, 1], // at the home position, slides will be full size
+    [300, 0.5] // at 300px, slides will be half size again
+  ]
+},
+{
+  name: 'rotate', // and add a little spin...
+  stops: [
+    [-300, -30], // rotate slides to the left
+    [0, 0], // they'll be straight at center
+    [300, 30] // and rotated to the right
+  ]
+}
+```
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -66,12 +86,3 @@ var ftx = new FlickityTransformer(flckty, {
 
 ## Contributing
 Contributions are welcome.
-
-### TODO
-
-- Add support for more transform functions.
-- Add ability to use units other than the defaults.
-- Replace d3-scale dependency with a lighter-weight linear scale that supports clamping and piecewise scales.
-- Unbundle d3-scale in commonjs module.
-- More useful tests.
-- Test against all Flickity features (e.g. wrapAround is not currently supported).
