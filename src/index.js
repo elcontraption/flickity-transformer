@@ -1,11 +1,4 @@
-import { scaleLinear } from 'd3-scale'
-
-/**
- * Module name
- *
- * @type {String}
- */
-const name = 'FlickityTransformer'
+import polylinearScale from 'polylinear-scale'
 
 /**
  * Set default units
@@ -50,12 +43,12 @@ let cellElements = []
 const FlickityTransformer = function (flkty, opts) {
   // Require two parameters
   if (arguments.length < 2) {
-    throw new Error(`${name} requires two parameters`)
+    throw new Error(`FlickityTransformer requires two parameters`)
   }
 
   // Require `transforms` array in `opts`
   if (opts.transforms === undefined) {
-    throw new Error(`${name} requires the second parameter contain a \`transforms\` array`)
+    throw new Error(`FlickityTransformer requires the second parameter contain a \`transforms\` array`)
   }
 
   flickity = flkty
@@ -83,7 +76,7 @@ function init () {
 
   // Require a version of Flickity supporting `scroll` event
   if (flickity._events.scroll === undefined) {
-    throw new Error(`${name} requires the first parameter to be a instance of Flickity that supports the \`scroll\` event (version 2+)`)
+    throw new Error(`FlickityTransformer requires the first parameter to be a instance of Flickity that supports the \`scroll\` event (version 2+)`)
   }
 
   // Apply again on resize
@@ -108,8 +101,10 @@ function createScaleFunctions () {
       range.push(stop[1])
     })
 
-    // Create scale function
-    transform.scale = scaleLinear().domain(domain).range(range).clamp(true)
+    // Create unique scale function
+    transform.scale = function (value) {
+      return polylinearScale(domain, range, true)(value)
+    }
   })
 }
 
@@ -150,7 +145,7 @@ function makeTransform (transform, xPos) {
   const unit = units[name] || ''
   const tx = transform.scale(xPos)
 
-  return `${name}(${tx}${unit})`
+  return `FlickityTransformer(${tx}${unit})`
 }
 
 /**
