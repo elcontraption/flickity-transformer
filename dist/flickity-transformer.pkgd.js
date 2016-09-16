@@ -45,11 +45,15 @@ function polylinearScale(domain, range, clamp) {
 function scale(value) {
   var domains = config.domain;
   var ranges = config.range;
+  var rangeMin;
+  var rangeMax;
   var domain;
   var range;
   var ratio;
   var result;
   var i = 0;
+
+  // problem, range might be [500, 0, 500]
 
   /* eslint-disable no-sequences */
   while (i < domains.length - 1) {
@@ -75,18 +79,23 @@ function scale(value) {
   result = range[0] + ratio * (value - domain[0]);
 
   if (config.clamp) {
-    var rangeMin = Math.min(range[0], range[1]);
-    var rangeMax = Math.max(range[0], range[1]);
+    rangeMin = Math.min(range[0], range[1]);
+    rangeMax = Math.max(range[0], range[1]);
     result = Math.min(rangeMax, Math.max(rangeMin, result));
   }
 
   return result;
 }
 
-module.exports.name = name;
-
 module.exports = polylinearScale;
 });
+
+/**
+ * Module name
+ *
+ * @type {String}
+ */
+var name = 'FlickityTransformer';
 
 /**
  * Set default units
@@ -131,12 +140,12 @@ var cellElements = [];
 var FlickityTransformer = function FlickityTransformer(flkty, opts) {
   // Require two parameters
   if (arguments.length < 2) {
-    throw new Error('FlickityTransformer requires two parameters');
+    throw new Error(name + ' requires two parameters');
   }
 
   // Require `transforms` array in `opts`
   if (opts.transforms === undefined) {
-    throw new Error('FlickityTransformer requires the second parameter contain a `transforms` array');
+    throw new Error(name + ' requires the second parameter contain a `transforms` array');
   }
 
   flickity = flkty;
@@ -164,7 +173,7 @@ function init() {
 
   // Require a version of Flickity supporting `scroll` event
   if (flickity._events.scroll === undefined) {
-    throw new Error('FlickityTransformer requires the first parameter to be a instance of Flickity that supports the `scroll` event (version 2+)');
+    throw new Error(name + ' requires the first parameter to be a instance of Flickity that supports the `scroll` event (version 2+)');
   }
 
   // Apply again on resize
@@ -233,7 +242,7 @@ function makeTransform(transform, xPos) {
   var unit = units[name] || '';
   var tx = transform.scale(xPos);
 
-  return 'FlickityTransformer(' + tx + unit + ')';
+  return name + '(' + tx + unit + ')';
 }
 
 return FlickityTransformer;
