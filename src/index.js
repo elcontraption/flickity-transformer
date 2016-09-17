@@ -15,9 +15,15 @@ const name = 'FlickityTransformer'
 const units = {
   perspective: 'px',
   rotate: 'deg',
+  rotateX: 'deg',
   rotateY: 'deg',
+  rotateZ: 'deg',
+  skew: 'deg',
+  skewX: 'deg',
+  skewY: 'deg',
   translateX: 'px',
-  translateY: 'px'
+  translateY: 'px',
+  translateZ: 'px'
 }
 
 /**
@@ -139,7 +145,8 @@ function applyTransforms (slide, i) {
  */
 function makeTransform (transform, xPos) {
   const name = transform.name
-  const unit = units[name] || ''
+  // const unit = units[name] || ''
+  const unit = transform.unit || units[name] || ''
   const tx = transform.scale(xPos)
 
   return `${name}(${tx}${unit})`

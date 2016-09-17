@@ -19,9 +19,15 @@ var name = 'FlickityTransformer';
 var units = {
   perspective: 'px',
   rotate: 'deg',
+  rotateX: 'deg',
   rotateY: 'deg',
+  rotateZ: 'deg',
+  skew: 'deg',
+  skewX: 'deg',
+  skewY: 'deg',
   translateX: 'px',
-  translateY: 'px'
+  translateY: 'px',
+  translateZ: 'px'
 };
 
 /**
@@ -143,7 +149,8 @@ function applyTransforms(slide, i) {
  */
 function makeTransform(transform, xPos) {
   var name = transform.name;
-  var unit = units[name] || '';
+  // const unit = units[name] || ''
+  var unit = transform.unit || units[name] || '';
   var tx = transform.scale(xPos);
 
   return name + '(' + tx + unit + ')';

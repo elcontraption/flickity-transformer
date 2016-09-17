@@ -17,6 +17,7 @@ Flickity Transformer provides a powerful interface to declare granular transform
 },
 {
   name: 'rotate', // and add a little rotation...
+  unit: 'rad', // use a unit other than the default
   stops: [
     [-300, -30], // rotate slides to the left
     [0, 0], // they'll be straight at center
@@ -51,7 +52,7 @@ CDN:
 ```
 
 ## Usage
-Create a new instance of FlickityTransformer, passing in your `flckty` instance and an array of `transforms`. Each transform should have a `name` property, corresponding to the transform function you want to use, and a `stops` array, containing at least two stops. Each stop is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
+Create a new FlickityTransformer, passing in your Flickity instance and an array of [transform objects](#transforms). Transforms will be applied to each Flickity cell in the order they are declared.
 
 ```js
 var Flickity = require('flickity')
@@ -73,11 +74,49 @@ var transformer = new FlickityTransformer(flkty, [
   {
     name: 'rotate',
     stops: [
-      [-300, -45],
-      [300, 45]
+      [-300, -1],
+      [300, 1]
     ]
   }
 ])
+```
+
+## Transforms
+Each object in the transforms array requires at least two properties: `name` and `stops`. Each stop in `stops` is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
+
+| name          | type      | value             |
+| ------------- | --------- | ----------------- |
+| `name`        | `String`  | (required) The [transform function name](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function)
+| `stops`       | `Array`   | (required) An array of at least two transform stops. |
+| `unit`        | `String`  | (optional) Override the [default unit](#default-units). |
+
+```js
+// Example: rotate cells between -1rad at -300px, and 1rad at 300px: 
+{
+  name: 'rotate',
+  unit: 'rad',
+  stops: [
+    [-300, -1],
+    [300, 1]
+  ]
+}
+```
+
+## Default units
+```js
+const units = {
+  perspective: 'px',
+  rotate: 'deg',
+  rotateX: 'deg',
+  rotateY: 'deg',
+  rotateZ: 'deg',
+  skew: 'deg',
+  skewX: 'deg',
+  skewY: 'deg',
+  translateX: 'px',
+  translateY: 'px',
+  translateZ: 'px'
+}
 ```
 
 ## Examples
