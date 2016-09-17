@@ -100,3 +100,4 @@ $ npm run functional
 
 # See various scripts in package.json
 ```
+Uses [JavaScript Standard Style](http://standardjs.com/).
