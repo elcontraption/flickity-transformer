@@ -49,21 +49,11 @@ var cellElements = [];
  * Constructor
  *
  * @param {Object} flkty The Flickity instance
- * @param {Object} opts  Configuration options
+ * @param {Array} txs Transforms array
  */
-var FlickityTransformer = function FlickityTransformer(flkty, opts) {
-  // Require two parameters
-  if (arguments.length < 2) {
-    throw new Error(name + ' requires two parameters');
-  }
-
-  // Require `transforms` array in `opts`
-  if (opts.transforms === undefined) {
-    throw new Error(name + ' requires the second parameter contain a `transforms` array');
-  }
-
+var FlickityTransformer = function FlickityTransformer(flkty, txs) {
   flickity = flkty;
-  transforms = opts.transforms;
+  transforms = txs;
   cellElements = flickity.getCellElements();
 
   init();

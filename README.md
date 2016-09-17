@@ -51,35 +51,33 @@ CDN:
 ```
 
 ## Usage
-Create a new instance of FlickityTransformer, passing in your `flckty` instance and a configuration object that contains an array of `transforms`. Each transform should have a `name` property, corresponding to the transform function you want to use, and a `stops` array, containing at least two stops. Each stop is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
+Create a new instance of FlickityTransformer, passing in your `flckty` instance and an array of `transforms`. Each transform should have a `name` property, corresponding to the transform function you want to use, and a `stops` array, containing at least two stops. Each stop is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
 
 ```js
 var Flickity = require('flickity')
 var FlickityTransformer = require('flickity-transformer')
 
-var flckty = new Flickity('.carousel', {
+var flkty = new Flickity('.carousel', {
   // options
 })
 
-var ftx = new FlickityTransformer(flckty, {
-  transforms: [
-    {
-      name: 'scale',
-      stops: [
-        [-300, 0.5],
-        [0, 1],
-        [300, 0.5]
-      ]
-    },
-    {
-      name: 'rotate',
-      stops: [
-        [-300, -45],
-        [300, 45]
-      ]
-    }
-  ]
-})
+var transformer = new FlickityTransformer(flkty, [
+  {
+    name: 'scale',
+    stops: [
+      [-300, 0.5],
+      [0, 1],
+      [300, 0.5]
+    ]
+  },
+  {
+    name: 'rotate',
+    stops: [
+      [-300, -45],
+      [300, 45]
+    ]
+  }
+])
 ```
 
 ## Examples
