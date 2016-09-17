@@ -39,16 +39,16 @@ npm i --save flickity-transformer
 ```
 
 Via download:
-- Minified: [flickity-transformer.pkgd.min.js](https://unpkg.com/flickity-transformer@0.2.0/dist/flickity-transformer.pkgd.min.js)
-- Un-minified: [flickity-transformer.pkgd.js](https://unpkg.com/flickity-transformer@0.2.0/dist/flickity-transformer.pkgd.js)
+- Minified: [flickity-transformer.pkgd.min.js](https://unpkg.com/flickity-transformer@0.3.0/dist/flickity-transformer.pkgd.min.js)
+- Un-minified: [flickity-transformer.pkgd.js](https://unpkg.com/flickity-transformer@0.3.0/dist/flickity-transformer.pkgd.js)
 
 CDN:
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/flickity-transformer@0.2.0/dist/flickity-transformer.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity-transformer@0.3.0/dist/flickity-transformer.pkgd.min.js"></script>
 
 <!-- Un-minified -->
-<script src="https://unpkg.com/flickity-transformer@0.2.0/dist/flickity-transformer.pkgd.js"></script>
+<script src="https://unpkg.com/flickity-transformer@0.3.0/dist/flickity-transformer.pkgd.js"></script>
 ```
 
 ## Usage
@@ -91,7 +91,7 @@ Each object in the transforms array requires at least two properties: `name` and
 | `unit`        | `String`  | (optional) Override the [default unit](#default-units). |
 
 ```js
-// Example: rotate cells between -1rad at -300px, and 1rad at 300px: 
+// Example: rotate cells between -1rad at -300px, and 1rad at 300px:
 {
   name: 'rotate',
   unit: 'rad',
