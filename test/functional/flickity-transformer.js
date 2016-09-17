@@ -11,32 +11,6 @@ var name = 'polylinearScale';
 var config = {};
 
 /**
- * A polylinear scale
- *
- * Supports multiple piecewise linear scales that divide a continuous domain and range.
- *
- * @param  {Array} domain     Two or more numbers
- * @param  {Array} range      Numbers equivalent to number in `domain`
- * @param  {Boolean} clamp    Enables or disables clamping
- * @return {Function}         Scale function
- */
-function polylinearScale(domain, range, clamp) {
-  domain = domain || [0, 1];
-  range = range || [0, 1];
-  clamp = clamp || false;
-
-  if (domain.length !== range.length) {
-    throw new Error(name + ' requires domain and range to have an equivalent number of values');
-  }
-
-  config.domain = domain;
-  config.range = range;
-  config.clamp = clamp;
-
-  return scale;
-}
-
-/**
  * The compiled scale to return
  *
  * @param  {Number} value The number to scale
@@ -83,6 +57,32 @@ function scale(value) {
   }
 
   return result;
+}
+
+/**
+ * A polylinear scale
+ *
+ * Supports multiple piecewise linear scales that divide a continuous domain and range.
+ *
+ * @param  {Array} domain     Two or more numbers
+ * @param  {Array} range      Numbers equivalent to number in `domain`
+ * @param  {Boolean} clamp    Enables or disables clamping
+ * @return {Function}         Scale function
+ */
+function polylinearScale(domain, range, clamp) {
+  domain = domain || [0, 1];
+  range = range || [0, 1];
+  clamp = clamp || false;
+
+  if (domain.length !== range.length) {
+    throw new Error(name + ' requires domain and range to have an equivalent number of values');
+  }
+
+  config.domain = domain;
+  config.range = range;
+  config.clamp = clamp;
+
+  return scale;
 }
 
 module.exports = polylinearScale;
