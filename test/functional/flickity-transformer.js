@@ -16,7 +16,7 @@ var config = {};
  * @param  {Number} value The number to scale
  * @return {Number}       The result
  */
-function scale(value) {
+var scale = function scale(value) {
   var domains = config.domain;
   var ranges = config.range;
   var rangeMin;
@@ -57,7 +57,7 @@ function scale(value) {
   }
 
   return result;
-}
+};
 
 /**
  * A polylinear scale
