@@ -53,8 +53,6 @@ function scale(value) {
   var result;
   var i = 0;
 
-  // problem, range might be [500, 0, 500]
-
   /* eslint-disable no-sequences */
   while (i < domains.length - 1) {
     if (value >= domains[i] && value <= domains[i + 1]) {

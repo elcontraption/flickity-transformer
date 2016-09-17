@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/elcontraption/flickity-transformer#readme",
   "dependencies": {
-    "polylinear-scale": "1.0.4"
+    "polylinear-scale": "1.0.5"
   },
   "devDependencies": {
     "babel-cli": "6.14.0",
