@@ -84,7 +84,7 @@ var transformer = new FlickityTransformer(flkty, [
 ## Transforms
 Each object in the transforms array requires at least two properties: `name` and `stops`. Each stop in `stops` is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
 
-| name          | type      | value             |
+| property      | type      | value             |
 | ------------- | --------- | ----------------- |
 | `name`        | `String`  | (required) The [transform function name](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function)
 | `stops`       | `Array`   | (required) An array of at least two transform stops. |
