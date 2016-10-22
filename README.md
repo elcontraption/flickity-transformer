@@ -121,6 +121,7 @@ const units = {
 
 ## Examples
 [Basic CodePen demo](http://codepen.io/elcontraption/pen/RGPboR)
+[Simple cover-flow example](http://codepen.io/elcontraption/pen/jrdOqr)
 
 ## Contributing
 Contributions are welcome. To get up and running:
