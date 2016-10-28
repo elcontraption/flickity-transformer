@@ -2,7 +2,7 @@
 
 Open up [Metafizzy's](http://metafizzy.co/) amazing [Flickity](http://flickity.metafizzy.co/) to a virtually limitless array of transform effects.
 
-**You can help improve this project.** Top priorities: support [`wrapAround: true`](issues/5) and [units other than pixels for stop positions](issues/7).
+**You can help improve this project.** Top priorities: support `wrapAround: true` and units other than pixels for stop positions. See issues for details.
 
 [![Demo image](demo.gif)](http://codepen.io/elcontraption/full/RGPboR/)
 
