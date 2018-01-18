@@ -106,7 +106,7 @@ const units = {
 - [Simple cover-flow example](http://codepen.io/elcontraption/pen/jrdOqr)
 
 ## Contributing
-Contributions are welcome. Top priorities are to support `wrapAround: true` and units other than pixels for stop positions. See issues for details. To get up and running:
+Contributions are welcome. Top priorities are to support `wrapAround: true` and units other than pixels for stop positions. See [issues](https://github.com/elcontraption/flickity-transformer/issues) for details. To get up and running:
 
 ```bash
 # Install dependencies
