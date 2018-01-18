@@ -7,29 +7,6 @@ Top priorities: support `wrapAround: true` and units other than pixels for stop 
 
 [![Demo image](demo.gif)](http://codepen.io/elcontraption/full/RGPboR/)
 
-Example:
-
-```js
-{
-  name: 'scale', // Let's scale your slides...
-  stops: [
-    [-300, 0.5], // at -300px, slides will be scaled to 0.5
-    [0, 1], // at the home position, slides will be full size
-    [300, 0.5] // at 300px, slides will be half size again
-  ]
-},
-{
-  name: 'rotate', // and add a little rotation...
-  unit: 'rad', // use a unit other than the default
-  stops: [
-    [-300, -30], // rotate slides to the left
-    [0, 0], // they'll be straight at center
-    [300, 30] // and rotated to the right
-    // Add as many stops as you need
-  ]
-}
-```
-
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
@@ -69,18 +46,21 @@ var flkty = new Flickity('.carousel', {
 
 var transformer = new FlickityTransformer(flkty, [
   {
-    name: 'scale',
+    name: 'scale', // Let's scale your cells...
     stops: [
-      [-300, 0.5],
-      [0, 1],
-      [300, 0.5]
+      [-300, 0.5], // at -300px, slides will be scaled to 0.5
+      [0, 1], // at the home position, slides will be full size
+      [300, 0.5] // at 300px, slides will be half size again
     ]
   },
   {
-    name: 'rotate',
+    name: 'rotate', // and add a little rotation...
+    unit: 'rad' // use a unit other than the default
     stops: [
-      [-300, -1],
-      [300, 1]
+      [-300, -1], // rotate slides to the left by 1 radian
+      [0, 0], // they'll be straight at center
+      [300, 1] // and rotated to the right
+      // Add as many stops as you need
     ]
   }
 ])
