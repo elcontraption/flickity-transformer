@@ -63,7 +63,7 @@ var transformer = new FlickityTransformer(flkty, [
 ])
 ```
 
-## Transforms
+### Transforms
 Each object in the transforms array requires at least two properties: `name` and `stops`. Each stop in `stops` is an array with two values: x position in pixels relative to the home position of your carousel, and the transform value to apply at that position.
 
 | property      | type      | value             |
@@ -84,7 +84,7 @@ Each object in the transforms array requires at least two properties: `name` and
 }
 ```
 
-## Default units
+### Default units
 ```js
 const units = {
   perspective: 'px',
