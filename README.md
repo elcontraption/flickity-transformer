@@ -6,6 +6,8 @@ An interface for declaring granular transform effects for [Flickity](http://flic
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Transforms](#transforms)
+  - [Default units](#default-units)
 - [Examples](#examples)
 - [Contributing](#contributing)
 
