@@ -2,9 +2,6 @@
 
 An interface for declaring granular transform effects for [Flickity](http://flickity.metafizzy.co/).
 
-## Improve this project
-Top priorities: support `wrapAround: true` and units other than pixels for stop positions. See issues for details.
-
 [![Demo image](demo.gif)](http://codepen.io/elcontraption/full/RGPboR/)
 
 - [Installation](#installation)
@@ -109,7 +106,7 @@ const units = {
 - [Simple cover-flow example](http://codepen.io/elcontraption/pen/jrdOqr)
 
 ## Contributing
-Contributions are welcome. To get up and running:
+Contributions are welcome. Top priorities are to support `wrapAround: true` and units other than pixels for stop positions. See issues for details. To get up and running:
 
 ```bash
 # Install dependencies
