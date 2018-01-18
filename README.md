@@ -1,12 +1,13 @@
 # Flickity Transformer
 
-Open up [Metafizzy's](http://metafizzy.co/) amazing [Flickity](http://flickity.metafizzy.co/) to a virtually limitless array of transform effects.
+An interface for declaring granular transform effects for [Flickity](http://flickity.metafizzy.co/).
 
-**You can help improve this project.** Top priorities: support `wrapAround: true` and units other than pixels for stop positions. See issues for details.
+## Improve this project
+Top priorities: support `wrapAround: true` and units other than pixels for stop positions. See issues for details.
 
 [![Demo image](demo.gif)](http://codepen.io/elcontraption/full/RGPboR/)
 
-Flickity Transformer provides a powerful interface to declare granular transform effects on carousel slides:
+Example:
 
 ```js
 {
