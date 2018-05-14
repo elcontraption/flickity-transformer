@@ -1,0 +1,113 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FlickityTransformer Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css@4.2.0">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.css" media="screen">
+
+  <style type="text/css">
+    .carousel {
+      height: 100vh;
+    }
+    .slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      height: 400px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .slide:nth-child(0n+1) { background: #D32F2F; }
+    .slide:nth-child(0n+2) { background: #FFA000; }
+    .slide:nth-child(0n+3) { background: #FFD54F; }
+    .slide:nth-child(0n+4) { background: #4CAF50; }
+    .slide:nth-child(0n+5) { background: #2196F3; }
+    .slide:nth-child(0n+6) { background: #4A148C; }
+  </style>
+
+  <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
+  <script src="flickity-transformer.js"></script>
+</head>
+<body>
+
+<div class="carousel" data-ftx>
+  <div class="slide">1</div>
+  <div class="slide">2</div>
+  <div class="slide">3</div>
+  <div class="slide">4</div>
+  <div class="slide">5</div>
+  <div class="slide">6</div>
+</div>
+
+<div class="carousel" data-ftx>
+  <div class="slide">1</div>
+  <div class="slide">2</div>
+  <div class="slide">3</div>
+  <div class="slide">4</div>
+  <div class="slide">5</div>
+  <div class="slide">6</div>
+</div>
+
+<script>
+const $els = document.querySelectorAll('[data-ftx]')
+
+const txs = [
+  {
+    name: 'scale',
+    stops: [
+      [-300, 0.5],
+      [0, 0.8],
+      [300, 0.5]
+    ]
+  },
+  {
+    name: 'translateY',
+    stops: [
+      [-1000, 500],
+      [0, 0],
+      [1000, 500]
+    ]
+  },
+  {
+    name: 'rotate',
+    stops: [
+      [-300, -30],
+      [0, 0],
+      [300, 30]
+    ]
+  },
+  {
+    name: 'perspective',
+    stops: [
+      [0, 600],
+      [1, 600]
+    ]
+  },
+  {
+    name: 'rotateY',
+    stops: [
+      [-300, 45],
+      [0, 0],
+      [300, -45]
+    ]
+  }
+]
+
+$els.forEach($el => {
+  var flk = new Flickity($el, {
+    setGallerySize: false,
+    pageDots: false
+  })
+
+  var ftx = new FlickityTransformer(flk, txs)
+})
+</script>
+
+</body>
+</html>

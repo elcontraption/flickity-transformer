@@ -26,130 +26,98 @@ const units = {
   translateZ: 'px'
 }
 
-/**
- * The Flickity instance
- *
- * @type {Object}
- */
-let flickity = {}
+class FlickityTransformer {
+  constructor (flickity, transforms) {
+    this.flickity = flickity
+    this.transforms = transforms
+    this.cellElements = flickity.getCellElements()
 
-/**
- * Transforms to apply
- *
- * @type {Array}
- */
-let transforms = []
-
-/**
- * Array of Flickity cell elements
- *
- * @type {Array}
- */
-let cellElements = []
-
-/**
- * Constructor
- *
- * @param {Object} flkty The Flickity instance
- * @param {Array} txs Transforms array
- */
-const FlickityTransformer = function (flkty, txs) {
-  flickity = flkty
-  transforms = txs
-  cellElements = flickity.getCellElements()
-
-  init()
-}
-
-/**
- * Initialize
- *
- * @return {null}
- */
-function init () {
-  createScaleFunctions()
-
-  // Apply initial transforms
-  flickity.slides.forEach(applyTransforms)
-
-  // Apply again on scroll
-  flickity.on('scroll', () => {
-    flickity.slides.forEach(applyTransforms)
-  })
-
-  // Require a version of Flickity supporting `scroll` event
-  if (flickity._events.scroll === undefined) {
-    throw new Error(`${name} requires the first parameter to be a instance of Flickity that supports the \`scroll\` event (version 2+)`)
+    this.init()
   }
 
-  // Apply again on resize
-  // TODO: debounce this?
-  window.addEventListener('resize', () => {
-    flickity.slides.forEach(applyTransforms)
-  })
-}
+  /**
+   * Initialize
+   */
+  init () {
+    this.createScaleFunctions()
 
-/**
- * Create scale functions for each transform
- *
- * @return {null}
- */
-function createScaleFunctions () {
-  transforms.forEach(transform => {
-    const domain = []
-    const range = []
+    // Apply initial transforms
+    this.flickity.slides.forEach(this.applyTransforms.bind(this))
 
-    transform.stops.forEach(stop => {
-      domain.push(stop[0])
-      range.push(stop[1])
+    // Apply again on scroll
+    this.flickity.on('scroll', () => {
+      this.flickity.slides.forEach(this.applyTransforms.bind(this))
     })
 
-    // Create unique scale function
-    transform.scale = function (value) {
-      return polylinearScale(domain, range, true)(value)
+    // Require a version of Flickity supporting `scroll` event
+    if (this.flickity._events.scroll === undefined) {
+      throw new Error(`${name} requires the first parameter to be a instance of Flickity that supports the \`scroll\` event (version 2+)`)
     }
-  })
-}
 
-/**
- * Apply transforms to an element
- *
- * @param  {Object} el Flickity element
- * @param  {Integer} i  Element index
- *
- * @return {null}
- */
-function applyTransforms (slide, i) {
-  const el = cellElements[i]
-  const txs = []
-  let xPos
+    // Apply again on resize
+    window.addEventListener('resize', () => {
+      this.flickity.slides.forEach(this.applyTransforms.bind(this))
+    })
+  }
 
-  // Get proximity to carousel home
-  xPos = slide.parent.x < 0 ? slide.target - Math.abs(slide.parent.x) : slide.target + slide.parent.x
+  /**
+   * Create scale functions for each transform
+   */
+  createScaleFunctions () {
+    this.transforms.forEach(transform => {
+      const domain = []
+      const range = []
 
-  // Make transforms
-  transforms.forEach(transform => {
-    txs.push(makeTransform(transform, xPos))
-  })
+      transform.stops.forEach(stop => {
+        domain.push(stop[0])
+        range.push(stop[1])
+      })
 
-  // Apply transforms
-  el.style.transform = txs.join(' ')
-}
+      // Create unique scale function
+      transform.scale = function (value) {
+        return polylinearScale(domain, range, true)(value)
+      }
+    })
+  }
 
-/**
- * Make an individual transform rule
- *
- * @param  {Object} transform The transform declaration
- * @param  {Number} xPos Element's proximity to carousel home
- * @return {String}
- */
-function makeTransform (transform, xPos) {
-  const name = transform.name
-  // const unit = units[name] || ''
-  const unit = transform.unit || units[name] || ''
-  const tx = transform.scale(xPos)
+  /**
+   * Apply transforms to an element
+   *
+   * @param  {Object} el Flickity element
+   * @param  {Integer} i  Element index
+   */
+  applyTransforms (slide, i) {
+    const el = this.cellElements[i]
+    const txs = []
+    let xPos
 
-  return `${name}(${tx}${unit})`
+    // Get proximity to carousel home
+    xPos = slide.parent.x < 0 ? slide.target - Math.abs(slide.parent.x) : slide.target + slide.parent.x
+
+    // Make transforms
+    this.transforms.forEach(transform => {
+      txs.push(this.makeTransform(transform, xPos))
+    })
+
+    // Apply transforms
+    el.style.transform = txs.join(' ')
+  }
+
+  /**
+   * Make an individual transform rule
+   *
+   * @param  {Object} transform The transform declaration
+   * @param  {Number} xPos Element's proximity to carousel home
+   * @return {String}
+   */
+  makeTransform (transform, xPos) {
+    const name = transform.name
+    // const unit = units[name] || ''
+    const unit = transform.unit || units[name] || ''
+    const tx = transform.scale(xPos)
+
+    return `${name}(${tx}${unit})`
+  }
 }
 
 /**

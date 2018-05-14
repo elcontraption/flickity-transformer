@@ -6,8 +6,6 @@ function createCommonjsModule(fn, module) {
 }
 
 var index = createCommonjsModule(function (module) {
-var name = 'polylinearScale';
-
 var config = {};
 
 /**
@@ -16,7 +14,7 @@ var config = {};
  * @param  {Number} value The number to scale
  * @return {Number}       The result
  */
-var scale = function scale(value) {
+function scale(value) {
   var domains = config.domain;
   var ranges = config.range;
   var rangeMin;
@@ -57,7 +55,7 @@ var scale = function scale(value) {
   }
 
   return result;
-};
+}
 
 /**
  * A polylinear scale
@@ -75,7 +73,7 @@ function polylinearScale(domain, range, clamp) {
   clamp = clamp || false;
 
   if (domain.length !== range.length) {
-    throw new Error(name + ' requires domain and range to have an equivalent number of values');
+    throw new Error('polylinearScale requires domain and range to have an equivalent number of values');
   }
 
   config.domain = domain;
@@ -87,6 +85,143 @@ function polylinearScale(domain, range, clamp) {
 
 module.exports = polylinearScale;
 });
+
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
+
+  function AsyncGenerator(gen) {
+    var front, back;
+
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
+
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
+    }
+
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
+
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
+        }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
+
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
+
+        case "throw":
+          front.reject(value);
+          break;
+
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
+
+      front = front.next;
+
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
+
+    this._invoke = send;
+
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
+
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
+
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
+
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
+
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
+}();
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * Module name
@@ -114,131 +249,120 @@ var units = {
   translateZ: 'px'
 };
 
-/**
- * The Flickity instance
- *
- * @type {Object}
- */
-var flickity = {};
+var FlickityTransformer = function () {
+  function FlickityTransformer(flickity, transforms) {
+    classCallCheck(this, FlickityTransformer);
 
-/**
- * Transforms to apply
- *
- * @type {Array}
- */
-var transforms = [];
+    this.flickity = flickity;
+    this.transforms = transforms;
+    this.cellElements = flickity.getCellElements();
 
-/**
- * Array of Flickity cell elements
- *
- * @type {Array}
- */
-var cellElements = [];
-
-/**
- * Constructor
- *
- * @param {Object} flkty The Flickity instance
- * @param {Array} txs Transforms array
- */
-var FlickityTransformer = function FlickityTransformer(flkty, txs) {
-  flickity = flkty;
-  transforms = txs;
-  cellElements = flickity.getCellElements();
-
-  init();
-};
-
-/**
- * Initialize
- *
- * @return {null}
- */
-function init() {
-  createScaleFunctions();
-
-  // Apply initial transforms
-  flickity.slides.forEach(applyTransforms);
-
-  // Apply again on scroll
-  flickity.on('scroll', function () {
-    flickity.slides.forEach(applyTransforms);
-  });
-
-  // Require a version of Flickity supporting `scroll` event
-  if (flickity._events.scroll === undefined) {
-    throw new Error(name + ' requires the first parameter to be a instance of Flickity that supports the `scroll` event (version 2+)');
+    this.init();
   }
 
-  // Apply again on resize
-  // TODO: debounce this?
-  window.addEventListener('resize', function () {
-    flickity.slides.forEach(applyTransforms);
-  });
-}
+  /**
+   * Initialize
+   */
 
-/**
- * Create scale functions for each transform
- *
- * @return {null}
- */
-function createScaleFunctions() {
-  transforms.forEach(function (transform) {
-    var domain = [];
-    var range = [];
 
-    transform.stops.forEach(function (stop) {
-      domain.push(stop[0]);
-      range.push(stop[1]);
-    });
+  createClass(FlickityTransformer, [{
+    key: 'init',
+    value: function init() {
+      var _this = this;
 
-    // Create unique scale function
-    transform.scale = function (value) {
-      return index(domain, range, true)(value);
-    };
-  });
-}
+      this.createScaleFunctions();
 
-/**
- * Apply transforms to an element
- *
- * @param  {Object} el Flickity element
- * @param  {Integer} i  Element index
- *
- * @return {null}
- */
-function applyTransforms(slide, i) {
-  var el = cellElements[i];
-  var txs = [];
-  var xPos = void 0;
+      // Apply initial transforms
+      this.flickity.slides.forEach(this.applyTransforms.bind(this));
 
-  // Get proximity to carousel home
-  xPos = slide.parent.x < 0 ? slide.target - Math.abs(slide.parent.x) : slide.target + slide.parent.x;
+      // Apply again on scroll
+      this.flickity.on('scroll', function () {
+        _this.flickity.slides.forEach(_this.applyTransforms.bind(_this));
+      });
 
-  // Make transforms
-  transforms.forEach(function (transform) {
-    txs.push(makeTransform(transform, xPos));
-  });
+      // Require a version of Flickity supporting `scroll` event
+      if (this.flickity._events.scroll === undefined) {
+        throw new Error(name + ' requires the first parameter to be a instance of Flickity that supports the `scroll` event (version 2+)');
+      }
 
-  // Apply transforms
-  el.style.transform = txs.join(' ');
-}
+      // Apply again on resize
+      window.addEventListener('resize', function () {
+        _this.flickity.slides.forEach(_this.applyTransforms.bind(_this));
+      });
+    }
 
-/**
- * Make an individual transform rule
- *
- * @param  {Object} transform The transform declaration
- * @param  {Number} xPos Element's proximity to carousel home
- * @return {String}
- */
-function makeTransform(transform, xPos) {
-  var name = transform.name;
-  // const unit = units[name] || ''
-  var unit = transform.unit || units[name] || '';
-  var tx = transform.scale(xPos);
+    /**
+     * Create scale functions for each transform
+     */
 
-  return name + '(' + tx + unit + ')';
-}
+  }, {
+    key: 'createScaleFunctions',
+    value: function createScaleFunctions() {
+      this.transforms.forEach(function (transform) {
+        var domain = [];
+        var range = [];
+
+        transform.stops.forEach(function (stop) {
+          domain.push(stop[0]);
+          range.push(stop[1]);
+        });
+
+        // Create unique scale function
+        transform.scale = function (value) {
+          return index(domain, range, true)(value);
+        };
+      });
+    }
+
+    /**
+     * Apply transforms to an element
+     *
+     * @param  {Object} el Flickity element
+     * @param  {Integer} i  Element index
+     */
+
+  }, {
+    key: 'applyTransforms',
+    value: function applyTransforms(slide, i) {
+      var _this2 = this;
+
+      var el = this.cellElements[i];
+      var txs = [];
+      var xPos = void 0;
+
+      // Get proximity to carousel home
+      xPos = slide.parent.x < 0 ? slide.target - Math.abs(slide.parent.x) : slide.target + slide.parent.x;
+
+      // Make transforms
+      this.transforms.forEach(function (transform) {
+        txs.push(_this2.makeTransform(transform, xPos));
+      });
+
+      // Apply transforms
+      el.style.transform = txs.join(' ');
+    }
+
+    /**
+     * Make an individual transform rule
+     *
+     * @param  {Object} transform The transform declaration
+     * @param  {Number} xPos Element's proximity to carousel home
+     * @return {String}
+     */
+
+  }, {
+    key: 'makeTransform',
+    value: function makeTransform(transform, xPos) {
+      var name = transform.name;
+      // const unit = units[name] || ''
+      var unit = transform.unit || units[name] || '';
+      var tx = transform.scale(xPos);
+
+      return name + '(' + tx + unit + ')';
+    }
+  }]);
+  return FlickityTransformer;
+}();
 
 return FlickityTransformer;
 
