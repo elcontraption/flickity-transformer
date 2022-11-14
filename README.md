@@ -1,5 +1,7 @@
 # Flickity Transformer
 
+**Note**: I'm no longer supporting this repo, please feel free to use my work to make something new.
+
 An interface for declaring granular transform effects for [Flickity](http://flickity.metafizzy.co/).
 
 [![Demo image](demo.gif)](http://codepen.io/elcontraption/full/RGPboR/)
