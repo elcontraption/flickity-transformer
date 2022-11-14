@@ -1,6 +1,11 @@
 # Flickity Transformer
 
-**Note**: I'm no longer supporting this project, please feel free to use my work to make something new.
+
+ 
+
+
+:robot: **I'm no longer supporting this project, please feel free to use my work to make something neat.** :robot:
+
 
 An interface for declaring granular transform effects for [Flickity](http://flickity.metafizzy.co/).
 
